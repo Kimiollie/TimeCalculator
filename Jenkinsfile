@@ -27,7 +27,7 @@ pipeline {
 
                 stage('Code Coverage') {
                     steps {
-                        jacoco path: '**/target/jacoco.exec'
+                        sh 'mvn jacoco:report'
                     }
                 }
             }
@@ -35,7 +35,7 @@ pipeline {
             post {
                 always {
                     junit '**/target/surefire-reports/*.xml'
-                    jacoco path: '**/target/jacoco.exec'
+                    publishCoverage adapters: [jacocoAdapter('**/target/site/jacoco/jacoco.xml')]
                 }
             }
         }
