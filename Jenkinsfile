@@ -2,11 +2,12 @@ pipeline {
             agent any
 
             stages {
-                stage('Checkout') {
-                    steps {
-                        git 'https://github.com/Kimiollie/TimeCalculator.git'
+                    stage('Checkout') {
+                        steps {
+                            git branch: 'main', url: 'https://github.com/Kimiollie/TimeCalculator.git'
+                        }
                     }
-                }
+
 
                 stage('Build') {
                     steps {
