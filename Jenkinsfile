@@ -27,7 +27,7 @@ pipeline {
 
                 stage('Code Coverage') {
                             steps {
-                                jacoco execPattern: '**/target/jacoco.exec'
+                                jacoco path: '**/target/jacoco.exec'
                             }
                         }
             }
@@ -35,7 +35,7 @@ pipeline {
             post {
                 always {
                     junit '**/target/surefire-reports/*.xml'
-                    jacoco execPattern: '**/target/jacoco.exec'
+                    jacoco path: '**/target/jacoco.exec'
                 }
             }
         }
